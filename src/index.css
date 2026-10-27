@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0D0F13;
+    --bg-secondary: #13171F;
+    --bg-card: #181D27;
+    --border-color: #2A3344;
+    --text-primary: #F4F6F9;
+    --text-muted: #8E9BB0;
+    --accent-signal: #FF9E1B;
+    --accent-cyan: #00D2D3;
+  }
+
+  .light {
+    --bg-primary: #F4F6F9;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --border-color: #D6DEEB;
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --accent-signal: #D97706;
+    --accent-cyan: #0891B2;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Technical Cockpit Grid Background */
+.cockpit-grid-bg {
+  background-image: radial-gradient(rgba(42, 51, 68, 0.25) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.cockpit-grid-bg-light {
+  background-image: radial-gradient(rgba(203, 213, 225, 0.6) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0F13;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A3344;
+  border-radius: 3px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9E1B;
+}
+
+/* Telemetry scanline & pulse keyframes */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glassmorphic Technical Card */
+.cockpit-panel {
+  background: rgba(24, 29, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(42, 51, 68, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+.light .cockpit-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(214, 222, 235, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+}
+
+/* Technical Accent Border Highlight */
+.tech-border-accent {
+  position: relative;
+}
+
+.tech-border-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF9E1B, transparent);
+  opacity: 0.8;
+}
+
+/* Telemetry Mono Digits */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
